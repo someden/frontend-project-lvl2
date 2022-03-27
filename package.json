@@ -24,7 +24,8 @@
     "test": "npx jest --bail"
   },
   "dependencies": {
-    "commander": "^9.0.0"
+    "commander": "^9.0.0",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@jest/globals": "^27.5.1",

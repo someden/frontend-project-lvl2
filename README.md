@@ -20,7 +20,13 @@ make test
 ### Usage
 
 ```sh
-gendiff fixtures/file1.json fixtures/file2.json
+gendiff __fixtures__/file1.json __fixtures__/file2.json
 ```
 
 [![asciicast](https://asciinema.org/a/SirtRH5MlD3TXinCYwFbUSi3n.svg)](https://asciinema.org/a/SirtRH5MlD3TXinCYwFbUSi3n)
+
+```sh
+gendiff __fixtures__/file1.yml __fixtures__/file2.yml
+```
+
+[![asciicast](https://asciinema.org/a/RioG0TRXMVtlUoxgpGqmp5ol8.svg)](https://asciinema.org/a/RioG0TRXMVtlUoxgpGqmp5ol8)
