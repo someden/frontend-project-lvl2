@@ -1,7 +1,6 @@
-import { isObject, diffTypes } from './utils.js';
+import { linesSeparator, isObject, diffTypes } from '../utils.js';
 
-export const stylish = (diffTree) => {
-  const linesSeparator = '\n';
+const stylish = (diffTree) => {
   const replacer = '  ';
 
   const iter = (value, depth) => {
@@ -25,16 +24,16 @@ export const stylish = (diffTree) => {
               }`;
             }
 
-            const deleted = `${indent}- ${key}: ${iter(oldValue, nextDepth)}`;
+            const removed = `${indent}- ${key}: ${iter(oldValue, nextDepth)}`;
             const added = `${indent}+ ${key}: ${iter(newValue, nextDepth)}`;
 
             switch (type) {
-              case diffTypes.deleted:
-                return deleted;
+              case diffTypes.removed:
+                return removed;
               case diffTypes.added:
                 return added;
               default:
-                return [deleted, added];
+                return [removed, added];
             }
           })
         : Object.entries(value).map(
@@ -47,9 +46,4 @@ export const stylish = (diffTree) => {
   return iter(diffTree, 1);
 };
 
-export const getFormatter = (type) => {
-  switch (type) {
-    default:
-      return stylish;
-  }
-};
+export default stylish;

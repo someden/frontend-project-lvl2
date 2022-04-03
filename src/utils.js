@@ -1,15 +1,17 @@
+export const linesSeparator = '\n';
+
 export const isObject = (value) => typeof value === 'object' && value !== null;
 
 export const diffTypes = {
-  deleted: 'deleted',
+  removed: 'removed',
   added: 'added',
   unchanged: 'unchanged',
-  changed: 'changed',
+  updated: 'updated',
 };
 
 export const getDiffType = (obj1, obj2, key) => {
   if (!Object.hasOwn(obj2, key)) {
-    return diffTypes.deleted;
+    return diffTypes.removed;
   }
 
   if (!Object.hasOwn(obj1, key)) {
@@ -20,7 +22,7 @@ export const getDiffType = (obj1, obj2, key) => {
     return diffTypes.unchanged;
   }
 
-  return diffTypes.changed;
+  return diffTypes.updated;
 };
 
 export const getDiffTree = (obj1, obj2) =>
