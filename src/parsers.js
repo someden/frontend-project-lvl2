@@ -2,8 +2,7 @@ import path from 'path';
 import { readFileSync } from 'fs';
 import { load } from 'js-yaml';
 
-export const getAbsolutePath = (filepath) =>
-  path.resolve(process.cwd(), filepath);
+export const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
 
 export const isJson = (ext) => ext === '.json';
 

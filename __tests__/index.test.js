@@ -6,8 +6,7 @@ import genDiff from '../index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const getFixturePath = (filename) =>
-  path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 const filepathJson1 = getFixturePath('file1.json');
 const filepathYml2 = getFixturePath('file2.yml');
@@ -15,7 +14,7 @@ const filepathYml2 = getFixturePath('file2.yml');
 const plainResult = readFileSync(getFixturePath('plainResult.txt'), 'utf-8');
 const stylishResult = readFileSync(
   getFixturePath('stylishResult.txt'),
-  'utf-8'
+  'utf-8',
 );
 const jsonResult = readFileSync(getFixturePath('jsonResult.txt'), 'utf-8');
 
