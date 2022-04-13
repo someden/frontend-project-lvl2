@@ -7,18 +7,18 @@ export const removed = 'removed';
 export const added = 'added';
 export const updated = 'updated';
 
-export const getDiffType = (obj1, obj2, key) => {
-  if (!_.has(obj2, key)) {
+const getDiffType = (data1, data2, key) => {
+  if (!_.has(data2, key)) {
     return removed;
   }
 
-  if (!_.has(obj1, key)) {
+  if (!_.has(data1, key)) {
     return added;
   }
 
   if (
-    obj1[key] === obj2[key]
-    || (_.isObject(obj1[key]) && _.isObject(obj2[key]))
+    data1[key] === data2[key]
+    || (_.isObject(data1[key]) && _.isObject(data2[key]))
   ) {
     return unchanged;
   }
@@ -26,17 +26,17 @@ export const getDiffType = (obj1, obj2, key) => {
   return updated;
 };
 
-export const getDiffTree = (obj1, obj2) => _.sortBy(Object.keys({ ...obj1, ...obj2 }))
+export const getDiffTree = (data1, data2) => _.sortBy(Object.keys({ ...data1, ...data2 }))
   .reduce(
     (acc, key) => [
       ...acc,
       {
         key,
-        oldValue: obj1[key],
-        newValue: obj2[key],
-        type: getDiffType(obj1, obj2, key),
-        children: _.isObject(obj1[key]) && _.isObject(obj2[key])
-          ? getDiffTree(obj1[key], obj2[key])
+        oldValue: data1[key],
+        newValue: data2[key],
+        type: getDiffType(data1, data2, key),
+        children: _.isObject(data1[key]) && _.isObject(data2[key])
+          ? getDiffTree(data1[key], data2[key])
           : [],
       },
     ],
